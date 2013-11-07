@@ -280,7 +280,7 @@ sub(/\<_para1:pCURLSH\>/, "sh:pCURLSH");
 sub(/\<_para1:CURLversion\>/, "ver:CURLversion");
 if ( /\<_para1:[A-Za-z_0-9]+code\>/ ) sub(/\<_para1:/,"code:");
 sub(/\<uses Libc;/,
-"{$IFDEF WIN32}\n\
+"{$IFDEF MSWINDOWS}\n\
 uses winsock;\n\
 {$ELSE}\n\
 uses Libc;\n\
@@ -289,7 +289,7 @@ uses Libc;\n\
 \n\
 {$MINENUMSIZE 4}\n\
 \n\
-{$IFDEF WIN32}\n\
+{$IFDEF MSWINDOWS}\n\
 type\n\
   off_t = longint;\n\
   size_t = longword;\n\

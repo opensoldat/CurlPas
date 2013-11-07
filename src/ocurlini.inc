@@ -169,14 +169,14 @@ begin
 //  fMaxRedirs:=0;
   SetIntOption(CURLOPT_MAXREDIRS, fMaxRedirs, 25);
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
 
-  if ( DEFAULT_WIN32_CA_CERT <> '' ) then begin
-    SetStrOption(CURLOPT_CAINFO, fCaInfo, DEFAULT_WIN32_CA_CERT);
+  if ( DEFAULT_WINDOWS_CA_CERT <> '' ) then begin
+    SetStrOption(CURLOPT_CAINFO, fCaInfo, DEFAULT_WINDOWS_CA_CERT);
   end else fCaInfo:=nil;
 
-  if ( DEFAULT_WIN32_CA_PATH <> '' ) then begin
-    SetStrOption(CURLOPT_CAPATH, fCaPath, DEFAULT_WIN32_CA_PATH);
+  if ( DEFAULT_WINDOWS_CA_PATH <> '' ) then begin
+    SetStrOption(CURLOPT_CAPATH, fCaPath, DEFAULT_WINDOWS_CA_PATH);
   end else fCaPath:=nil;
 
 {$ELSE}

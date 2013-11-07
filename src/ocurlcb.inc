@@ -186,8 +186,8 @@ procedure tCurl.InitOutputFile;
 var
   TmpFunc, TmpStrm:pointer;
 const
-  ModeWrite: pChar = {$IFDEF WIN32}'wb'{$ELSE}'w'{$ENDIF}; { ... Write binary for win32 ! }
-  ModeAppend: pChar = {$IFDEF WIN32}'ab'{$ELSE}'a'{$ENDIF};
+  ModeWrite: pChar = {$IFDEF MSWINDOWS}'wb'{$ELSE}'w'{$ENDIF}; { ... Write binary for Windows ! }
+  ModeAppend: pChar = {$IFDEF MSWINDOWS}'ab'{$ELSE}'a'{$ENDIF};
 begin
   TmpFunc:=nil;
   TmpStrm:=nil;
@@ -281,7 +281,7 @@ var
   TmpFunc, TmpStrm:pointer;
 
 const
-  ModeRead: pChar = {$IFDEF WIN32}'rb'{$ELSE}'r'{$ENDIF}; { ... Binary input for win32 ! }
+  ModeRead: pChar = {$IFDEF MSWINDOWS}'rb'{$ELSE}'r'{$ENDIF}; { ... Binary input for windows ! }
 
 begin
   TmpFunc:=nil;
