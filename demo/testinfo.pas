@@ -22,7 +22,7 @@ begin
     then URL:=ParamStr(1) 
     else URL:='http://www.netscape.net';
 
-    OutputFile:={$IFDEF WIN32}'NUL'{$ELSE}'/dev/null'{$ENDIF};
+    OutputFile:={$IFDEF MSWINDOWS}'NUL'{$ELSE}'/dev/null'{$ENDIF};
     ProgressFunction:=@ProgressCB;
     NoProgress:=False;
     RequestFileTime:=True;

@@ -36,7 +36,7 @@ end;
 
 
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
   procedure CurlThreadExecute(o:pointer); cdecl;
   begin
     with TCurl(o) do begin
@@ -45,7 +45,7 @@ end;
     end;
     _endthread();
   end;
-{$ELSE WIN32}
+{$ELSE MSWINDOWS}
   function CurlThreadExecute(o:pointer):LongInt; cdecl;
   begin
     with TCurl(o) do begin 
@@ -54,7 +54,7 @@ end;
     end;
     Result:=0;
   end;
-{$ENDIF WIN32}
+{$ENDIF MSWINDOWS}
 
 function tCurl.DoPerform(aCurl:pCurl):CurlCode;
 const
@@ -71,7 +71,7 @@ begin
     end;
     fThdResult:=fCurlResult;
     fBusy:=True;
-    {$IFDEF WIN32}
+    {$IFDEF MSWINDOWS}
       fThread:=_beginthread( @CurlThreadExecute,0, self );
       while (fBusy) do begin
         Windows.Sleep(fWaitInterval);
@@ -79,7 +79,7 @@ begin
         else if Assigned(fWaitCallback) and ( {$IFNDEF FPC}@{$ENDIF}fWaitCallback <> nil ) then fWaitCallback(fWaitData);
       end;
       CloseHandle(fThread);
-    {$ELSE WIN32}
+    {$ELSE MSWINDOWS}
       pthread_mutex_init({$IFDEF FPC}@{$ENDIF}fMutex, nil);
       pthread_create({$IFDEF FPC}@{$ENDIF}fThread, nil, {$IFDEF FPC}@{$ENDIF}CurlThreadExecute, self);
       while (fBusy) do begin 
@@ -108,14 +108,14 @@ end;
 
 procedure tCurl.MutexLock;
 begin
-  {$IFNDEF WIN32}
+  {$IFNDEF MSWINDOWS}
     if fThreaded then pthread_mutex_lock(fMutex);
   {$ENDIF}
 end;
 
 procedure tCurl.MutexUnlock;
 begin
-  {$IFNDEF WIN32}
+  {$IFNDEF MSWINDOWS}
     if fThreaded then pthread_mutex_unlock(fMutex);
   {$ENDIF}
 end;

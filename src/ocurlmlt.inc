@@ -188,7 +188,7 @@ begin
 end;
 
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
 procedure MultiPerform(p:pointer); cdecl;
 {$ELSE}
 function MultiPerform(p:pointer):LongInt; cdecl;
@@ -237,7 +237,7 @@ begin
     end;
     fBusy:=False;
   end;
-  {$IFDEF WIN32}
+  {$IFDEF MSWINDOWS}
      _endthread();
   {$ELSE}
     Result:=0;
@@ -249,7 +249,7 @@ procedure tCurlMulti.Perform;
 begin
   if fThreaded then begin
      fBusy:=True;
-    {$IFDEF WIN32}
+    {$IFDEF MSWINDOWS}
       fThread:=_beginthread( @MultiPerform, 0, self );
       while (fBusy) do begin
         Windows.Sleep(fWaitInterval);
@@ -257,7 +257,7 @@ begin
         else if Assigned(fWaitCallback) and ( {$IFNDEF FPC}@{$ENDIF}fWaitCallback <> nil ) then fWaitCallback(fWaitData);
       end;
       CloseHandle(fThread);
-    {$ELSE WIN32}
+    {$ELSE MSWINDOWS}
       pthread_mutex_init({$IFDEF FPC}@{$ENDIF}fMutex, nil);
       pthread_create({$IFDEF FPC}@{$ENDIF}fThread, nil, {$IFDEF FPC}@{$ENDIF}MultiPerform, self);
       while (fBusy) do begin 

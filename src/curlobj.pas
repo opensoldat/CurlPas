@@ -22,12 +22,12 @@ type
     fOnWait:tNotifyEvent;
     fWaitCallback:tCurlWaitCallback;
     fWaitData:pointer;
-    {$IFDEF WIN32}
+    {$IFDEF MSWINDOWS}
       fThread:DWORD;
-    {$ELSE WIN32}
+    {$ELSE MSWINDOWS}
       fThread:pthread_t;
       fMutex:pthread_mutex_t;
-    {$ENDIF WIN32}
+    {$ENDIF MSWINDOWS}
   protected
     procedure SetWaitInterval(ms:Longint);
     procedure SetOnWait(aEvent:tNotifyEvent);
@@ -175,7 +175,7 @@ begin
 end;
 
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
 procedure InitWin32CACert;
 var
   buflen:DWORD;
@@ -212,7 +212,7 @@ initialization
   GlobalProtocolList:=InitProtocolList;
   GlobalVersionInfoData:=curl_version_info(CURLVERSION_NOW)^;
   InitFeatures;
-  {$IFDEF WIN32}
+  {$IFDEF MSWINDOWS}
   InitWin32CACert();
   {$ENDIF}
 finalization

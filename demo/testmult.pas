@@ -7,7 +7,7 @@ program testmult;
 uses {$IFDEF LINUX}Libc,{$ELSE}winsock,{$ENDIF}curl_h;
 
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
   type 
     pIOFile=pointer;
   function fopen ( path, mode: pChar ): pIOFile; cdecl; external 'msvcrt.dll' name 'fopen';

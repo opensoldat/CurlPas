@@ -8,7 +8,7 @@ unit curl_h;
 
 interface
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
 uses winsock;
 {$ELSE}
 uses Libc;
@@ -17,7 +17,7 @@ uses Libc;
 
 {$MINENUMSIZE 4}
 
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
 type
   off_t = longint;
   size_t = longword;

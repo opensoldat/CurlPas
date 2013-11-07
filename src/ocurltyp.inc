@@ -3,7 +3,7 @@
 
 {$IFDEF CURLOBJ_INTERFACE}
 
-{$IFDEF WIN32} 
+{$IFDEF MSWINDOWS} 
   type 
     pIOFile=pointer;
     tThreadStartProc = procedure(arg:pointer); cdecl;
@@ -23,9 +23,9 @@
   function _beginthread( func:tThreadStartProc; stack:DWORD; arg:pointer ):DWORD; cdecl; external MSVCRT_DLL name '_beginthread';
   procedure _endthread(); cdecl; external MSVCRT_DLL name '_endthread';
   function getenv(varname:pChar):pChar; cdecl; external MSVCRT_DLL name 'getenv';
-{$ELSE WIN32}
+{$ELSE MSWINDOWS}
   procedure _free(p:pointer); cdecl; external 'libc.so' name 'free';
-{$ENDIF WIN32}
+{$ENDIF MSWINDOWS}
 
 {$IFNDEF CURL_COMPONENT}
 type 

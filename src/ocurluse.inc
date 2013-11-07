@@ -12,9 +12,9 @@
 {$IFDEF FPC}
   {$IFDEF LAZARUS}
     {$DEFINE CURL_COMPONENT}
-    {$IFDEF WIN32}
+    {$IFDEF MSWINDOWS}
       {$R *.res}
-    {$ENDIF WIN32}
+    {$ENDIF MSWINDOWS}
   {$ENDIF LAZARUS}
 {$ELSE FPC}
   {$DEFINE CURL_COMPONENT}
@@ -23,19 +23,19 @@
 
 
 {$IFDEF FPC}
-  {$IFDEF WIN32}
+  {$IFDEF MSWINDOWS}
     {$IFDEF CURL_COMPONENT}
       uses sysutils, winsock, classes, LResources, windows;
     {$ELSE CURL_COMPONENT}
       uses sysutils, windows, winsock;
     {$ENDIF CURL_COMPONENT}
-  {$ELSE WIN32}
+  {$ELSE MSWINDOWS}
     {$IFDEF CURL_COMPONENT}
       uses sysutils, classes, LResources, libc;
     {$ELSE CURL_COMPONENT}
       uses strings, libc;
     {$ENDIF CURL_COMPONENT}
-  {$ENDIF WIN32}
+  {$ENDIF MSWINDOWS}
 {$ELSE FPC}
   uses Classes, sysutils, {$IFDEF LINUX} Libc {$ELSE} Windows, winsock {$ENDIF};
 {$ENDIF FPC}

@@ -33,7 +33,7 @@ begin  { MAIN }
     OutputFile:='testpart.tmp';
 //    Verbose:=True;
     NoBody:=True; // Get only response headers for now
-    HeaderFile:={$IFDEF WIN32}'NUL'{$ELSE}'/dev/null'{$ENDIF}; // Hide the console output
+    HeaderFile:={$IFDEF MSWINDOWS}'NUL'{$ELSE}'/dev/null'{$ENDIF}; // Hide the console output
 
     WriteLn('Connecting to "', URL, '"');
 

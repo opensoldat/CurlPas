@@ -8,7 +8,7 @@ var
   DoneCount: LongInt = 0;
 
 const
-  NULL_FILE = {$IFDEF WIN32}'NUL'{$ELSE}'/dev/null'{$ENDIF};
+  NULL_FILE = {$IFDEF MSWINDOWS}'NUL'{$ELSE}'/dev/null'{$ENDIF};
 
 
 function ProgressMeter( clientp: pointer; dltotal, dlnow, ultotal, ulnow: double ): LongInt; cdecl;
