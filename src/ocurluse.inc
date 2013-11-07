@@ -3,10 +3,10 @@
 
 // Uses clause and global ifdef's ...
 
-{$H+}
 {$IFDEF FPC}
   {$MODE OBJFPC}
 {$ENDIF}
+{$H+}
 
 
 {$IFDEF FPC}

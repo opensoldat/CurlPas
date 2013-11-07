@@ -27,7 +27,7 @@ begin
   fOnProgress:=aProc;
   if ( FuncPtr(@aProc) <> nil ) then begin
     SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PROGRESSFUNCTION, @DoProgress), CURLOPT_PROGRESSFUNCTION);
-    SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PROGRESSDATA, Self), CURLOPT_PROGRESSDATA);
+    SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PROGRESSDATA, pointer(Self)), CURLOPT_PROGRESSDATA);
     SetResultCode(curl_easy_setopt(fCurl, CURLOPT_NOPROGRESS, LongInt(False)), CURLOPT_NOPROGRESS);
   end else begin
     SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PROGRESSFUNCTION, nil), CURLOPT_PROGRESSFUNCTION);
@@ -90,7 +90,7 @@ begin
   fOnDebug:=aProc;
   if ( FuncPtr(@aProc) <> nil ) then begin
    SetResultCode(curl_easy_setopt(fCurl, CURLOPT_DEBUGFUNCTION, @DoDebug), CURLOPT_DEBUGFUNCTION);
-   SetResultCode(curl_easy_setopt(fCurl, CURLOPT_DEBUGDATA, Self), CURLOPT_DEBUGDATA);
+   SetResultCode(curl_easy_setopt(fCurl, CURLOPT_DEBUGDATA, pointer(Self)), CURLOPT_DEBUGDATA);
    SetResultCode(curl_easy_setopt(fCurl, CURLOPT_VERBOSE, LongInt(True)), CURLOPT_VERBOSE);
   end else begin
     SetResultCode(curl_easy_setopt(fCurl, CURLOPT_DEBUGFUNCTION, nil), CURLOPT_DEBUGFUNCTION);

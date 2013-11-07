@@ -122,7 +122,7 @@ begin
   SetResultCode(curl_easy_setopt(fCurl, CURLOPT_COOKIEFILE, pChar(#0#0)), CURLOPT_COOKIEFILE);
 
   fPrivateData:=nil;
-  SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PRIVATE, self), CURLOPT_PRIVATE);
+  SetResultCode(curl_easy_setopt(fCurl, CURLOPT_PRIVATE, pointer(self)), CURLOPT_PRIVATE);
 
   fHttpAuth:=[AUTH_BASIC];
   fProxyAuth:=[AUTH_BASIC];
