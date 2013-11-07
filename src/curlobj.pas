@@ -176,7 +176,7 @@ end;
 
 
 {$IFDEF MSWINDOWS}
-procedure InitWin32CACert;
+procedure InitWindowsCACert;
 var
   buflen:DWORD;
   buf:pChar;
@@ -213,7 +213,7 @@ initialization
   GlobalVersionInfoData:=curl_version_info(CURLVERSION_NOW)^;
   InitFeatures;
   {$IFDEF MSWINDOWS}
-  InitWin32CACert();
+  InitWindowsCACert();
   {$ENDIF}
 finalization
   GlobalProtocolList.Free;
