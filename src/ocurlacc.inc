@@ -50,7 +50,7 @@ begin
 end;
 
 {$ELSE} 
-(* **********    WIN32   ********** *)
+(* **********    WINDOWS   ********** *)
 
 {$HINTS OFF} // Yes, Delphi - I know they are platform specific - didn't you read my ifdef ???
 const
