@@ -10,7 +10,7 @@ interface
 {$DEFINE CURLOBJ_INTERFACE}
   {$INCLUDE ocurluse.inc} // <- USES clause and global IFDEF's 
   {$INCLUDE ocurlacc.inc} // <- Convenience functions for file-handling ( exist / access / size )
-  {$INCLUDE ocurltyp.inc} // <- Type declarations ( and Win32 MSVCRT ansi-c functions )
+  {$INCLUDE ocurltyp.inc} // <- Type declarations ( and Windows MSVCRT ansi-c functions )
 {$UNDEF CURLOBJ_INTERFACE}
 
 type
