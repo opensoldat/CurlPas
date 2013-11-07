@@ -8,7 +8,7 @@ unit curlobj;
 interface
 
 {$DEFINE CURLOBJ_INTERFACE}
-  {$INCLUDE ocurluse.inc} // <- USES clause and global IFDEF's 
+  {$INCLUDE ocurluse.inc} // <- USES clause and global IFDEF's
   {$INCLUDE ocurlacc.inc} // <- Convenience functions for file-handling ( exist / access / size )
   {$INCLUDE ocurltyp.inc} // <- Type declarations ( and Windows MSVCRT ansi-c functions )
 {$UNDEF CURLOBJ_INTERFACE}
@@ -44,7 +44,7 @@ type
   end;
 
 
-type 
+type
   TCurl = class ( TCurlBase )
     {$DEFINE TCURL_INTF}
       {$INCLUDE ocurlprv.inc}  //  <- Private fields
@@ -60,7 +60,7 @@ type
     procedure Clear;
     procedure ListCookies;
     class function Escape(const s:string):string;
-    class function UnEscape(const s:string):string;    
+    class function UnEscape(const s:string):string;
 
   end;
 
@@ -164,7 +164,7 @@ begin
   curl_free(tmp);
 end;
 
-class function tCurl.Unescape(const s:string):string;    
+class function tCurl.Unescape(const s:string):string;
 var
   tmp:pChar;
 begin

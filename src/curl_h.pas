@@ -579,7 +579,7 @@ function  curl_multi_strerror(code:CURLMcode):pchar; cdecl; external LIB_CURL;
 
 const
   CURLOPT_SSLKEYPASSWD = CURLOPT_SSLCERTPASSWD;
-  
+
   CURLAUTH_ANY =  not (0);
   CURLAUTH_BASIC = 1 shl 0;
   CURLAUTH_DIGEST = 1 shl 1;

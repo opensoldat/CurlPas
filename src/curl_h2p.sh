@@ -63,7 +63,7 @@ do
       echo "$LINE"
     else
       echo -n "$LINE "
-    fi     
+    fi
   else
     echo ${LINE//,/} | { read NAME EQUALS ARG_ONE PLUS ARG_TWO
       echo -n $NAME = $(( ARG_ONE + ARG_TWO ))
@@ -126,22 +126,22 @@ while read LINE
     echo "$LINE" | grep '; args:array of const.* cdecl;' > /dev/null
     if [ $?  -eq 0 ]
     then
-      echo "$LINE" | { 
+      echo "$LINE" | {
                        if [ "$FPC_HAS_VARARGS" = "yes" ]
                        then
                          awk '{
-                               sub(/; args:array of const/, ""); 
-                               sub(/ cdecl;/, " varargs; cdecl;"); print }' 
+                               sub(/; args:array of const/, "");
+                               sub(/ cdecl;/, " varargs; cdecl;"); print }'
                        else
                          awk '{
-                               sub(/; args:array of const/, "{$IFDEF FPC}; args:array of const{$ENDIF}"); 
-                               sub(/ cdecl;/, "{$IFNDEF FPC} varargs; cdecl;{$ENDIF}"); print }' 
+                               sub(/; args:array of const/, "{$IFDEF FPC}; args:array of const{$ENDIF}");
+                               sub(/ cdecl;/, "{$IFNDEF FPC} varargs; cdecl;{$ENDIF}"); print }'
                        fi
                      }
       SKIP_NEXT="yes" # next line after function with 'array of const' is a duplicate with no varargs
     else
-      if [ $SKIP_NEXT = "no" ] 
-      then 
+      if [ $SKIP_NEXT = "no" ]
+      then
         echo "$LINE" | grep 'arg:longint' > /dev/null
         if [ $? -eq 0 ]
         then
@@ -266,8 +266,8 @@ tr -s '\n' | {
       ;;
     esac
   done
-} | awk '{ 
-sub(/; cdecl; external LIB_CURL name \047[a-z_]+\047;/,"; cdecl; external LIB_CURL;"); 
+} | awk '{
+sub(/; cdecl; external LIB_CURL name \047[a-z_]+\047;/,"; cdecl; external LIB_CURL;");
 sub(/^\{\$MODE OBJFPC\}$/, "{$IFDEF FPC}{$MODE OBJFPC}{$ENDIF}");
 sub(/^\{\$PACKRECORDS C\}$/, "{$IFDEF FPC}{$PACKRECORDS C}{$ENDIF}");
 gsub(/\<pfd_set\>/, "pfdset");
