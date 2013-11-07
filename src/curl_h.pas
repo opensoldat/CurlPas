@@ -26,7 +26,7 @@ type
 {$ENDIF}
 
 const
-  LIB_CURL = {$IFDEF LINUX} 'libcurl.so' {$ELSE} 'libcurl-3.dll' {$ENDIF};
+  LIB_CURL = {$IFDEF LINUX} 'libcurl.so' {$ELSE} 'libcurl.dll' {$ENDIF};
 
 {$IFDEF FPC}{$PACKRECORDS C}{$ENDIF}
 
