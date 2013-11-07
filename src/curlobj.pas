@@ -187,12 +187,12 @@ begin
     FillChar(buf^, MAX_PATH+1, #0);
     buflen:=SearchPathA(nil, 'curl-ca-bundle.crt', nil, MAX_PATH+2, buf, {$IFDEF FPC}@{$ENDIF}p);
     if ( buflen > 0 ) then begin
-      DEFAULT_WIN32_CA_CERT:=buf;
-      UniqueString(DEFAULT_WIN32_CA_CERT);
+      DEFAULT_WINDOWS_CA_CERT:=buf;
+      UniqueString(DEFAULT_WINDOWS_CA_CERT);
       if ( p <> nil ) then begin
         p[0]:=#0;
-        DEFAULT_WIN32_CA_PATH:=buf;
-        UniqueString(DEFAULT_WIN32_CA_PATH);
+        DEFAULT_WINDOWS_CA_PATH:=buf;
+        UniqueString(DEFAULT_WINDOWS_CA_PATH);
       end;
     end;
     FreeMem(buf);

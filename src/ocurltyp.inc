@@ -10,8 +10,8 @@
   const
     MSVCRT_DLL = 'msvcrt.dll';
   var
-    DEFAULT_WIN32_CA_CERT: string = '';
-    DEFAULT_WIN32_CA_PATH: string = '';
+    DEFAULT_WINDOWS_CA_CERT: string = '';
+    DEFAULT_WINDOWS_CA_PATH: string = '';
 
   function fopen ( path, mode: pChar ): pIOFile; cdecl; external MSVCRT_DLL name 'fopen';
   function fclose ( f:pIOFile ): LongInt; cdecl; external MSVCRT_DLL name 'fclose';
